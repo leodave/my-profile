@@ -1,8 +1,8 @@
 <template>
-  <v-container class = "cont mt-15 ml-15">
+  <v-container class = "cont ml-15 mb-15">
   
-   <div class="mt-15 ml-15">
-    <div class="mt-15">
+   <div class="ml-15">
+    <div>
     <span class="back">
 <v-spacer/><span>D</span><span>A</span><span>W</span><span>I</span><span>T</span><span> </span>
   <span>E</span><span>L</span><span>I</span><span>A</span><span>S</span>
@@ -16,7 +16,7 @@
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'HomeWorld',
 
   }
 </script>

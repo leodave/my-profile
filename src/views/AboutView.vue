@@ -1,14 +1,14 @@
 <template>
-  <CareerPath/>
+  <AboutMe/>
 </template>
 <script>
- import CareerPath from '../components/CareerPath'
+ import AboutMe from '../components/AboutMe'
 
 export default {
-  name: 'CareerView',
+  name: 'AboutView',
 
   components: {
-    CareerPath,
+    AboutMe,
   },
 }
 </script>

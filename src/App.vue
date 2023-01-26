@@ -1,6 +1,6 @@
 <template>
  
-  <v-app>
+  <v-app >
     <v-app-bar
       app
       color="primary"
@@ -17,13 +17,12 @@
           width="40"
         />
         
-        <v-btn x-large success @click="toggleToolbar">Dawit Elias</v-btn>
+        <v-btn   v-if=showMenu  x-large success @click="toggleToolbar" width="150">Menu</v-btn>
         
       </div>
       <v-spacer />
-      <v-btn x-large success><router-link to="/">My Profile</router-link></v-btn>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <v-btn x-large success><router-link to="/careerpath">Career Path</router-link></v-btn>
+      <v-btn x-large success @click="homePage">Home-Page</v-btn>
+      
       
      
 
@@ -51,8 +50,33 @@
   
     
     <v-main>
+      <span v-show="btn">
+        <v-card
+         elevation="24"
+         color="blue"
+         height="600"
+         width="200"
+         outlined
+         tile
+         
+        >
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/aboutme" class="text-decoration">About Me</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Education</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Experience</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Hobbies</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150"  height="30" @click="menuButtons"><router-link to="/" class="text-decoration">LinkedIN</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Git-Hub</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150"  height="30" @click="menuButtons"><router-link to="/" class="text-decoration">CV</router-link></v-btn>
+
+      </v-card>
+      
+     
       
      <router-view/> 
+    </span>
+    <span v-show="!btn">
+      <router-view/>
+    </span>
     </v-main>
   </v-app>
 
@@ -68,23 +92,31 @@ export default {
 
   data() {
     return {
-      showInfo: true,
+      btn: true,
+      showMenu:true,
     }
   },
   methods: {
-    toggleToolbar() {
-      this.showInfo = !this.showInfo;
+   async toggleToolbar() {
+      this.btn= !this.btn;
+      
+      
     },
+    async menuButtons() {
+      this.showMenu=false;
+      this.btn= !this.btn;
+    },
+    async homePage() {
+      
+      this.$router.push('/')
+      this.showMenu=true;
+    }
   },
 };
 </script>
 <style>
-.btn {
- 
-}
-.info {
-  color: red;
-}
+
+
 .appbar {
   height: 200px;
 }
@@ -112,5 +144,8 @@ export default {
 .content {
   position: relative;
   z-index: 1;
+}
+.text-decoration {
+  text-decoration: none;
 }
 </style>
