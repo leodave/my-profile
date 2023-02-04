@@ -38,9 +38,13 @@
       </v-btn>
     </v-app-bar>
       
+    <v-main>  
+    
+      <video class="bg-video" :src="require('@/assets/Binary - 847.mp4')" ref="videoPlayer" autoplay loop muted>
+      
         
-      <video class="bg-video" :src="require('@/assets/Chain - 25380.mp4')" ref="videoPlayer" autoplay loop muted>
-      </video> 
+     </video> 
+    
       <div class="content">
         <!--<div v-show="showInfo">
         <v-row>
@@ -49,7 +53,7 @@
     </div>
   
     
-    <v-main>
+    
       <span v-show="btn">
         <v-card
          elevation="24"
@@ -58,19 +62,23 @@
          width="200"
          outlined
          tile
+         style="position: absolute; z-index: 1;"
          
         >
           <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/aboutme" class="text-decoration">About Me</router-link></v-btn>
-          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Education</router-link></v-btn>
-          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Experience</router-link></v-btn>
-          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Hobbies</router-link></v-btn>
-          <v-btn x-large success class="mt-5 ml-5" width="150"  height="30" @click="menuButtons"><router-link to="/" class="text-decoration">LinkedIN</router-link></v-btn>
-          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/" class="text-decoration">Git-Hub</router-link></v-btn>
-          <v-btn x-large success class="mt-5 ml-5" width="150"  height="30" @click="menuButtons"><router-link to="/" class="text-decoration">CV</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="35" @click="menuButtons"><router-link to="/education" class="text-decoration">Education & <br>Certifications</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/experience" class="text-decoration">Experience</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/projects" class="text-decoration">Projects</router-link></v-btn>
+          <v-btn x-large success class="mt-5 ml-5" width="150" height="30" @click="menuButtons"><router-link to="/hobbies" class="text-decoration">Hobbies</router-link></v-btn>
+          
+          <v-btn x-large success class="mt-5 ml-5 white blue--text" width="150"  height="30" @click="menuButtons" href="https://www.linkedin.com/in/dawit-elias/"  target="_blank" text>LinkedIN</v-btn>
+          <v-btn x-large success class="mt-5 ml-5 white blue--text" width="150"  height="30" @click="menuButtons" href="https://github.com/leodave"  target="_blank" text>GitHub</v-btn>
+          <v-btn x-large success class="mt-5 ml-5 white blue--text" width="150"  height="30" @click="menuButtons" href="https://www.linkedin.com/in/dawit-elias/"  target="_blank" text>CV</v-btn>
 
       </v-card>
       
-     
+    
+  
       
      <router-view/> 
     </span>
@@ -103,13 +111,13 @@ export default {
       
     },
     async menuButtons() {
-      this.showMenu=false;
+      //this.showMenu=false;
       this.btn= !this.btn;
     },
     async homePage() {
       
       this.$router.push('/')
-      this.showMenu=true;
+      //this.showMenu=!this.showMenu;
     }
   },
 };
@@ -124,22 +132,24 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  min-width: 100%;
+  height: 1500px;
   overflow: hidden;
 }
 
+
 .bg-video video {
   position: absolute;
-  top: 100%;
+  top: 1500px;
   left: 100%;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 300%;
   width: auto;
-  height: auto;
-  z-index: -1;
+  height: 500px;
+  z-index: -100;
   transform: translateX(-50%) translateY(-50%);
 }
+
 
 .content {
   position: relative;
@@ -148,4 +158,8 @@ export default {
 .text-decoration {
   text-decoration: none;
 }
+.bot {
+  color: white;
+}
+
 </style>
